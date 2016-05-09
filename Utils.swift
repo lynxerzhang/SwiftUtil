@@ -79,22 +79,6 @@ class Utils {
     return isMatch
   }
   
-  class func showAlert(controller: UIViewController, message: String?, title: String?) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-    alert.addAction(UIAlertAction(title: Language.getLang(100024), style: .Default, handler: nil))
-    controller.presentViewController(alert, animated: true, completion: nil)
-  }
-
-  class func showAlert(controller: UIViewController, message: String?,
-                       title: String?, handler:(() -> ())?) {
-    let alert = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-    alert.addAction(UIAlertAction(title: Language.getLang(100024), style: .Default) {
-      data in
-      handler?()
-    })
-    controller.presentViewController(alert, animated: true, completion: nil)
-  }
-  
   //inspried from http://chrismontrois.net/2014/08/02/swift-techniques-strings/
   class func trim(string: String) -> String {
     let spaceSet = NSCharacterSet.whitespaceCharacterSet()
@@ -149,7 +133,6 @@ class Utils {
     return result
   }
   
-  //Prefix:NEL4N79SGT
   /*
   *
   * @see
