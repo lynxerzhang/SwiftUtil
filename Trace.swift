@@ -1,8 +1,20 @@
-/**
- 输出调试日志至控制台
- 
- @see http://www.blendedcocoa.com/blog/2014/06/12/file-function-etc-as-defaults-in-swift/
- */
-func Trace(message: String, function: String = __FUNCTION__){
-    print("\(__FILE__)-\(function):\(__LINE__)-->\(message)")
+//
+//  Trace.swift
+//
+import Foundation
+
+func trace(message: String, file: String = #file, function: String = #function, line: Int = #line) {
+  #if DEVELOPMENT
+    print("\(NSString(string: file).lastPathComponent)'s \(function) at:\(line) --> \(message)")
+  #else
+    //NSStringFromClass(self.dynamicType)
+  #endif
+}
+
+func dump(message: String, withContext: String) {
+  #if DEVELOPMENT
+    print("\(withContext):\(message)")
+  #else
+  
+  #endif
 }
