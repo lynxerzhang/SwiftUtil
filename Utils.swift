@@ -31,7 +31,8 @@ class Utils {
           if replaceStringArgs.count >= index {
             result = result.stringByReplacingOccurrencesOfString(word,
                                             withString: replaceStringArgs[indexAry[index]],
-                                            options: NSStringCompareOptions.LiteralSearch, range: nil)
+                                            options: NSStringCompareOptions.LiteralSearch,
+                                            range: nil)
           }
         }
       }
@@ -48,7 +49,8 @@ class Utils {
                                 options: NSRegularExpressionOptions(rawValue: 0))
       result = patterns.stringByReplacingMatchesInString(str,
                                 options: NSMatchingOptions(rawValue:0),
-                                range: NSMakeRange(0, str.characters.count), withTemplate: replaceWith)
+                                range: NSMakeRange(0, str.characters.count),
+                                withTemplate: replaceWith)
     }
     catch {
     }
@@ -66,8 +68,10 @@ class Utils {
   class func isMatch(str: String, pattern: String) -> Bool {
     var isMatch:Bool = false
     do {
-      let regex = try NSRegularExpression(pattern: pattern, options: [.CaseInsensitive])
-      let result = regex.firstMatchInString(str, options: NSMatchingOptions(rawValue: 0),
+      let regex = try NSRegularExpression(pattern: pattern,
+                                          options: [.CaseInsensitive])
+      let result = regex.firstMatchInString(str,
+                                            options: NSMatchingOptions(rawValue: 0),
                                             range: NSMakeRange(0, str.characters.count))
       if (result != nil){
         isMatch = true
@@ -86,6 +90,24 @@ class Utils {
     return trimmed
   }
   
+  class func trimTail(string: String) -> String {
+    return replaceByString(string, pattern: "\\s+$", replaceWith: "")
+  }
+  
+  class func trimHead(string: String) -> String {
+    return replaceByString(string, pattern: "^\\s+", replaceWith: "")
+  }
+  
+  class func startWith(str: String, head: String) -> Bool {
+    let offset = min(head.characters.count, str.characters.count)
+    return str.substringToIndex(str.startIndex.advancedBy(offset)) == head
+  }
+  
+  class func endWith(str: String, tail: String) -> Bool {
+    let offset = min(str.characters.count, max(str.characters.count - tail.characters.count, 0))
+    return str.substringFromIndex(str.startIndex.advancedBy(offset)) == tail
+  }
+  
   //write by Matt Neuburg
   class func delay(delay: Double, closure:() -> ()) {
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(delay * Double(NSEC_PER_SEC))),
@@ -96,7 +118,8 @@ class Utils {
     if txt.text != nil {
       let d = NSMutableAttributedString(string: txt.text!)
       for (location) in locationLength.enumerate() {
-        d.addAttribute(NSForegroundColorAttributeName, value: color[location.index],
+        d.addAttribute(NSForegroundColorAttributeName,
+                       value: color[location.index],
                        range: NSRange(location: location.element.0, length: location.element.1))
       }
       txt.attributedText = d
@@ -124,7 +147,8 @@ class Utils {
     do {
       let regex = try NSRegularExpression(pattern: "[\\u4E00-\\u9FA5]",
                                           options: NSRegularExpressionOptions(rawValue: 0))
-      let matchNum = regex.numberOfMatchesInString(str, options: NSMatchingOptions(rawValue: 0),
+      let matchNum = regex.numberOfMatchesInString(str,
+                                                 options: NSMatchingOptions(rawValue: 0),
                                                  range: NSMakeRange(0, str.characters.count))
       result = matchNum
     }
