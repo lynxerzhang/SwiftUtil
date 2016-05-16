@@ -1,17 +1,19 @@
 //
 //  StringExt.swift
 //  TODO
-//
-//
-
 import Foundation
-
 //@see
 //https://www.raywenderlich.com/86205/nsregularexpression-swift-tutorial
 //http://andybargh.com/swift-strings/
 //http://chrismontrois.net/2014/08/02/swift-techniques-strings/
-
 extension String {
+  
+  /**
+   截取字符串
+   - Parameter startIndex: 起始索引点
+   - Parameter endIndex:   结束索引点（最终字符串中不会包含该字符）
+   - Returns: 返回指定截取的字符串
+   */
   func slice(startIndex: Int = 0, endIndex: Int = Int.max) -> String {
     var str = ""
     var start = startIndex, end = endIndex
@@ -35,6 +37,12 @@ extension String {
     return str
   }
   
+  /**
+   截取字符串
+   - Parameter startIndex: 起始索引点
+   - Parameter len:   截取的字符串长度
+   - Returns: 返回指定截取的字符串
+   */
   func substr(startIndex: Int = 0, len: Int = Int.max) -> String {
     var str = ""
     var start = startIndex, end = len
@@ -59,6 +67,12 @@ extension String {
     return str
   }
   
+  /**
+   截取字符串
+   - Parameter startIndex: 起始索引点
+   - Parameter endIndex:   结束索引点（最终字符串中不会包含该字符）
+   - Returns: 返回指定截取的字符串
+   */
   func substring(startIndex: Int = 0, endIndex: Int = Int.max) -> String {
     var str = ""
     var start = startIndex, end = endIndex
@@ -84,6 +98,11 @@ extension String {
     return str
   }
   
+  /**
+   检查指定索引处的字符
+   - Parameter index: 字符串中指定的索引值
+   - Returns:  返回指定位置字符，默认为空字符
+   */
   func charAt(index: Int) -> String {
     let count = self.length
     var str = "" //if str is a character, it is Illegal
@@ -94,6 +113,10 @@ extension String {
     return str
   }
   
+  /**
+   是否匹配指定字符串
+   - Parameter pattern: 正则表达式
+   */
   func isMatch(pattern: String) -> Bool {
     var isMatch:Bool = false
     do {
@@ -110,6 +133,12 @@ extension String {
     return isMatch
   }
   
+  /**
+   检索指定字符串
+   - Parameter val:        待搜索字符串
+   - Parameter startIndex: 起始搜索索引
+   - Returns: 返回搜索到的字符串最初索引位置，如没有搜索到返回－1
+   */
   func indexOf(val: String, startIndex: Int = 0) -> Int {
     var findIndex: Int = -1
     let count = self.length
@@ -135,11 +164,16 @@ extension String {
     return findIndex
   }
   
+  /**
+   前后翻转指定字符串
+   */
   func reverse() -> String {
     return String(self.characters.reverse())
   }
   
-  //get string's length
+  /**
+   获取字符串长度
+   */
   var length: Int {
     return self.characters.count
   }
