@@ -4,9 +4,13 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface NSString (StringExtension)
 
-- (nonnull NSString *)slice:(NSInteger)startIndex byEndIndex:(NSInteger)endIndex;
-- (nonnull NSString *)substr:(NSInteger)startIndex byLen:(NSInteger)len;
+- (NSString *)slice:(NSInteger)startIndex byEndIndex:(NSInteger)endIndex;
+- (NSString *)substr:(NSInteger)startIndex byLen:(NSInteger)len;
 
 @end
+
+NS_ASSUME_NONNULL_END

@@ -6,22 +6,25 @@
 
 #import <Foundation/Foundation.h>
 
+NS_ASSUME_NONNULL_BEGIN
+
 @interface Utils : NSObject
 
-+ (nonnull NSString *)replace:(nonnull NSString *)string
-            replaceStringArgs:(nonnull NSArray *)args;
++ (NSString *)replace:(NSString *)string
+            replaceStringArgs:(NSArray *)args;
 
-+ (nonnull NSString *)trim:(nonnull NSString *)string;
++ (NSString *)trim:(NSString *)string;
 
-+ (nonnull NSString *)trimHead:(nonnull NSString *)string;
++ (NSString *)trimHead:(NSString *)string;
 
-+ (nonnull NSString *)trimTail:(nonnull NSString *)string;
++ (NSString *)trimTail:(NSString *)string;
 
-+ (nonnull NSString *)replaceByString:(nonnull NSString *)str
-                          withPattern:(nonnull NSString *)pattern
-                          replaceWith:(nonnull NSString *)replaceText;
++ (NSString *)replaceByString:(NSString *)str
+                          withPattern:(NSString *)pattern
+                          replaceWith:(NSString *)replaceText;
 
 @end
 
 #endif /* Utils_h */
 
+NS_ASSUME_NONNULL_END
