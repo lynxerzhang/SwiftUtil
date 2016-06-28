@@ -3,6 +3,51 @@
 //
 import UIKit
 
+
+/**
+ 返回主队列(Serial Queue)
+ - Returns: 返回dispatch_queue_t
+ */
+var getMainQueue: dispatch_queue_t {
+  return dispatch_get_main_queue()
+}
+
+/**
+ 返回并行队列(Concurrent Queue)
+ - Returns: 返回dispatch_queue_t
+ */
+var getUserInitiated: dispatch_queue_t {
+  //DISPATCH_QUEUE_PRIORITY_HIGH
+  return dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0)
+}
+
+/**
+ 返回并行队列(Concurrent Queue)
+ - Returns: 返回dispatch_queue_t
+ */
+var getUtility: dispatch_queue_t {
+  //DISPATCH_QUEUE_PRIORITY_LOW
+  return dispatch_get_global_queue(QOS_CLASS_UTILITY, 0)
+}
+
+/**
+ 返回并行队列(Concurrent Queue)
+ - Returns: 返回dispatch_queue_t
+ */
+var getDefault: dispatch_queue_t {
+  //DISPATCH_QUEUE_PRIORITY_DEFAULT
+  return dispatch_get_global_queue(QOS_CLASS_DEFAULT, 0)
+}
+
+/**
+ 返回并行队列(Concurrent Queue)
+ - Returns: 返回dispatch_queue_t
+ */
+var getBackground: dispatch_queue_t {
+  //DISPATCH_QUEUE_PRIORITY_BACKGROUND
+  return dispatch_get_global_queue(QOS_CLASS_BACKGROUND, 0)
+}
+
 class Utils {
   
   /**
