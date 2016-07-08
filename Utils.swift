@@ -287,6 +287,35 @@ class Utils {
     return result
   }
   
+  /**
+   设置指定显示对象的自身属性适配
+   - Parameter view: 指定显示对象
+   - Parameter attribute: 需要依附的属性
+   - Parameter equal: 属性值
+   */
+  class func setDisplayObjectProperty(view: UIView, attribute: NSLayoutAttribute, equal: CGFloat) {
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.addConstraint(NSLayoutConstraint(item: view, attribute: attribute,
+      relatedBy: NSLayoutRelation.Equal, toItem: nil, attribute:
+      NSLayoutAttribute.NotAnAttribute, multiplier: 1.0, constant: equal))
+  }
+  
+  /**
+   以父级显示对象为基准，将指定的子级显示对象的属性依附于该父级显示对象
+   - Parameter parentView: 父级显示对象
+   - Parameter view: 子级显示对象
+   - Parameter attribute: 子级需要依附的属性
+   - Parameter equal: 属性值
+   */
+  class func setDisplayObjectEdge(parentView: UIView, view: UIView,
+                                  attribute: NSLayoutAttribute, equal: CGFloat) {
+    view.translatesAutoresizingMaskIntoConstraints = false
+    parentView.addConstraint(NSLayoutConstraint(item: view,
+      attribute: attribute, relatedBy: NSLayoutRelation.Equal,
+      toItem: parentView, attribute: attribute, multiplier: 1.0, constant: equal))
+  }
+
+  
   /*
    *
    * @see
